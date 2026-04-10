@@ -1,0 +1,18 @@
+import React from 'react'
+import { GlobalContext } from './GlobalContext'
+
+const Produto = () => {
+    const { dados, loading, error } = React.useContext(GlobalContext);
+
+    return <>
+        {loading && <p>Carregando produtos...</p>}
+        {!loading && error && <p>{error}</p>}
+        {!loading && !error && <ul>
+            {dados.map((prod) => (
+                <li key={prod.id}>{prod.nome}</li>
+            ))}
+        </ul>}
+    </>
+}
+
+export default Produto;
